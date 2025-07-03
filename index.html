@@ -2,105 +2,188 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pagamento | VF Bank</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VF Bank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f1f1f1;
+      font-family: 'Montserrat', sans-serif;
+      color: #111;
+      background-color: #f8f9fa;
+    }
+    header {
+      background-color: #001f3f;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    nav {
+      background: #000;
+      color: white;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1,
+    h2 {
+      color: #001f3f;
+      margin-bottom: 1rem;
+    }
+    footer {
+      background: #000;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    .simulador input {
+      padding: 0.5rem;
+      margin: 0.5rem 0.5rem 0 0;
+      width: 200px;
+    }
+    .simulador select,
+    .simulador button {
+      padding: 0.5rem;
+      margin-right: 0.5rem;
+    }
+    .resultado {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #0074d9;
+    }
+    /* Botão fixo WhatsApp */
+    .whatsapp-fixo {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      font-size: 32px;
+      padding: 14px 16px;
+      border-radius: 50%;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      transition: background-color 0.3s;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      margin: 0;
     }
-    .container {
-      background-color: #fff;
-      padding: 2em;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 400px;
-    }
-    h2 {
-      text-align: center;
-      color: #333;
-    }
-    label {
-      display: block;
-      margin-top: 1em;
-      color: #555;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    button {
-      margin-top: 1.5em;
-      width: 100%;
-      padding: 12px;
-      background-color: #0070f3;
-      color: #fff;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #005bb5;
-    }
-    .success-message {
-      margin-top: 1em;
-      color: green;
-      text-align: center;
+    .whatsapp-fixo:hover {
+      background-color: #1ebe5d;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Pagamento VF Bank</h2>
-    <form id="payment-form">
-      <label for="name">Nome no Cartão</label>
-      <input type="text" id="name" required />
+  <header>
+    <h1>VF Bank</h1>
+    <p>Soluções em Empréstimos e Cobranças com Transparência e Agilidade</p>
+  </header>
 
-      <label for="card">Número do Cartão</label>
-      <input type="text" id="card" maxlength="16" required />
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#simulador">Simulador</a>
+    <a href="#contato">Contato</a>
+  </nav>
 
-      <label for="validity">Validade (MM/AA)</label>
-      <input type="text" id="validity" maxlength="5" required />
+  <section id="sobre">
+    <h2>Sobre</h2>
+    <p>
+      A VF Bank é uma empresa especializada em serviços financeiros, com foco em cobranças e concessão
+      de empréstimos. Trabalhamos com responsabilidade e transparência para ajudar você a organizar suas finanças e realizar seus objetivos.
+    </p>
+  </section>
 
-      <label for="cvv">CVV</label>
-      <input type="text" id="cvv" maxlength="3" required />
+  <section id="servicos">
+    <h2>Serviços</h2>
+    <ul>
+      <li>Cobrança de empréstimos pendentes</li>
+      <li>Concessão de empréstimos rápidos e seguros</li>
+      <li>Consultoria para regularização de crédito</li>
+    </ul>
+  </section>
 
-      <label for="amount">Valor (R$)</label>
-      <input type="number" id="amount" min="1" step="0.01" required />
+  <section id="simulador">
+    <h2>Simulador de Empréstimos</h2>
+    <p>
+      Informe o valor e o prazo para simular com juros de <strong>20% ao mês</strong> ou <strong>10% ao dia</strong>.
+    </p>
+    <div class="simulador">
+      <input type="number" id="valor" placeholder="Valor do empréstimo" />
+      <input type="number" id="prazo" placeholder="Prazo" />
+      <select id="tipoPrazo">
+        <option value="mes">Mensal (20% ao mês)</option>
+        <option value="dia">Diário (10% ao dia)</option>
+      </select>
+      <button onclick="simular()">Simular</button>
+      <div class="resultado" id="resultado"></div>
+    </div>
+  </section>
 
-      <button type="submit">Pagar</button>
-      <p class="success-message" id="success" style="display: none;">Pagamento efetuado com sucesso!</p>
-    </form>
-  </div>
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>Telefone/WhatsApp: <strong>(33) 99970-2202</strong></p>
+    <a href="https://wa.me/5533999702202?text=Olá%2C%20tenho%20interesse%20em%20um%20empréstimo%20com%20a%20VF%20Bank." target="_blank" style="display: inline-block; background-color: #25D366; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+      Falar no WhatsApp
+    </a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 VF Bank - Todos os direitos reservados</p>
+  </footer>
+
+  <!-- Botão fixo WhatsApp -->
+  <a
+    href="https://wa.me/5533999702202?text=Olá%2C%20tenho%20interesse%20em%20um%20empréstimo%20com%20a%20VF%20Bank."
+    class="whatsapp-fixo"
+    target="_blank"
+    aria-label="Abrir conversa no WhatsApp"
+  >
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
   <script>
-    const form = document.getElementById("payment-form");
-    const success = document.getElementById("success");
+    function simular() {
+      const valor = parseFloat(document.getElementById('valor').value);
+      const prazo = parseInt(document.getElementById('prazo').value);
+      const tipoPrazo = document.getElementById('tipoPrazo').value;
+      const resultado = document.getElementById('resultado');
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
+      if (isNaN(valor) || isNaN(prazo) || valor <= 0 || prazo <= 0) {
+        resultado.textContent = "Por favor, insira valores válidos.";
+        return;
+      }
 
-      // Aqui você pode integrar com uma API real no futuro.
-      success.style.display = "block";
+      let montante;
+      if (tipoPrazo === 'mes') {
+        montante = valor * Math.pow(1 + 0.20, prazo); // 20% ao mês
+      } else {
+        montante = valor * Math.pow(1 + 0.10, prazo); // 10% ao dia
+      }
 
-      // Limpa os campos
-      form.reset();
-
-      // Oculta a mensagem após 4 segundos
-      setTimeout(() => {
-        success.style.display = "none";
-      }, 4000);
-    });
+      resultado.textContent = `Valor final a pagar: R$ ${montante.toFixed(2).replace('.', ',')}`;
+    }
   </script>
 </body>
 </html>
